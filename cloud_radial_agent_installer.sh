@@ -5,8 +5,10 @@ PARTNER_URL="https://veit.us.cloudradial.com"
 COMPANY_ID=$1
 
 # Stop daemon if already running
-launchctl unload /Library/LaunchDaemons/com.cloudradial.mac.agent.plist
-plutil -remove KeepAlive /Library/LaunchDaemons/com.cloudradial.mac.agent.plist
+if [[ $(launchctl list | grep com.cloudradial.mac.agent) ]]; then
+    launchctl unload /Library/LaunchDaemons/com.cloudradial.mac.agent.plist
+    plutil -remove KeepAlive /Library/LaunchDaemons/com.cloudradial.mac.agent.plist
+fi
 
 # Download current package
 if [[ $(uname -p) == 'arm' ]]; then
