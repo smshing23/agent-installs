@@ -2,7 +2,7 @@
 
 SERVICE_ENDPOINT="https://veit.services-us6.cloudradial.com" 
 PARTNER_URL="https://veit.us.cloudradial.com" 
-COMPANY_ID=$1
+COMPANY_ID="$1"
 
 # Stop daemon if already running
 if [[ $(launchctl list | grep com.cloudradial.mac.agent) ]]; then
