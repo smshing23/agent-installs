@@ -24,6 +24,8 @@ plutil -insert ProgramArguments -xml "<array><string>/Library/LaunchDaemons/Clou
 plutil -remove KeepAlive "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist"
 plutil -insert KeepAlive -bool true "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist"
 # Load the daemon
+launchctl unload "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist"
 launchctl load "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist"
 # Display daemon status
 launchctl list cloudradial.mac.agent
+echo "Script installer end"
