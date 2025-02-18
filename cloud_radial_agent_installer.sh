@@ -20,8 +20,8 @@ fi
 # Ensure required fields are filled 
 if [ -z "$SERVICE_ENDPOINT" ]; then echo "Error: Please enter a valid service endpoint URL." | tee -a "$LOG_FILE" exit 1 fi 
 if [ -z "$PARTNER_URL" ]; then echo "Error: Please enter a valid partner URL." | tee -a "$LOG_FILE" exit 1 fi 
-if [ -z "$COMPANY_ID" ]; then echo "Error: Please enter a valid company ID." | tee -a "$LOG_FILE" exit 1 
-fi echo "CloudRadial Mac Agent Installer" | tee -a "$LOG_FILE" echo "Service Endpoint: $SERVICE_ENDPOINT" | tee -a "$LOG_FILE" echo "Partner URL: $PARTNER_URL" | tee -a "$LOG_FILE" echo "Company ID: $COMPANY_ID" | tee -a "$LOG_FILE" echo "Security Key: $SECURITY_KEY" | tee -a "$LOG_FILE" echo "" | tee -a "$LOG_FILE" 
+if [ -z "$COMPANY_ID" ]; then echo "Error: Please enter a valid company ID." | tee -a "$LOG_FILE" exit 1 fi 
+echo "CloudRadial Mac Agent Installer" | tee -a "$LOG_FILE" echo "Service Endpoint: $SERVICE_ENDPOINT" | tee -a "$LOG_FILE" echo "Partner URL: $PARTNER_URL" | tee -a "$LOG_FILE" echo "Company ID: $COMPANY_ID" | tee -a "$LOG_FILE" echo "Security Key: $SECURITY_KEY" | tee -a "$LOG_FILE" echo "" | tee -a "$LOG_FILE" 
 # Check if the agent is already installed 
 if [ -f "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist" ]; then echo "CloudRadial Mac agent already installed. Exiting." | tee -a "$LOG_FILE" exit 0 fi 
 # Stop daemon if already running 
