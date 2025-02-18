@@ -49,7 +49,8 @@ sudo plutil -insert ProgramArguments -xml "<array><string>/Library/LaunchDaemons
 sudo plutil -remove KeepAlive "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist" 2>/dev/null 
 sudo plutil -insert KeepAlive -bool true "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist"
 # Load the daemon 
-sudo launchctl load "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist" # Display daemon status 
+sudo launchctl load "/Library/LaunchDaemons/com.cloudradial.mac.agent.plist" 
+# Display daemon status 
 sudo launchctl list | grep "cloudradial.mac.agent" | tee -a "$LOG_FILE" 
 # Ensure the script exits with a success code 
 echo "Script execution completed." | tee -a "$LOG_FILE" 
