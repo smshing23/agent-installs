@@ -36,10 +36,7 @@ elif [[ "$ARCH" == 'i386' ]]; then echo "Installing for Intel" | tee -a "$LOG_FI
 PKG_URL="https://cloudradialagent.blob.core.windows.net/macagent/cloudradial.mac.agent-x64.pkg" 
 else echo "Error: Unsupported architecture." | tee -a "$LOG_FILE" exit 1 fi 
 # Retry logic for downloading the package 
-attempts=0 max_attempts=3 while [ $attempts -lt $max_attempts ]; do curl -s "$PKG_URL" --output /tmp/cloudradial.mac.agent.pkg 
-if [ $? -eq 0 ]; then echo "Download successful." | tee -a "$LOG_FILE" break fi 
-attempts=$((attempts+1)) echo "Download attempt $attempts failed. Retrying in 10 seconds..." | tee -a "$LOG_FILE" sleep 10 done 
-if [ $attempts -eq $max_attempts ]; then echo "Error: Failed to download package after $max_attempts attempts." | tee -a "$LOG_FILE" exit 1 fi 
+curl -s "$PKG_URL" --output /tmp/cloudradial.mac.agent.pkg 
 # Install the package 
 sudo installer -pkg /tmp/cloudradial.mac.agent.pkg -target / 2>>"$LOG_FILE" 
 if [ $? -ne 0 ]; then echo "Error: Installation failed." | tee -a "$LOG_FILE" exit 1 fi 
